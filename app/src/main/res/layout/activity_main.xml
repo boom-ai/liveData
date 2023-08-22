@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <data>
+        <variable
+            name="activity"
+            type="com.sanket.livedata.MainActivity" />
+    </data>
+        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LinearLayout"
+        >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red"
+        android:id="@+id/btnRed"
+        android:backgroundTint="@color/Red"
+
+        />
+    <Button
+        android:layout_marginStart="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blue"
+        android:id="@+id/btnBlue"
+        android:backgroundTint="@color/Blue"
+
+        />
+    <Button
+    android:layout_marginStart="30dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/btnGreen"
+    android:text="Green"
+    android:backgroundTint="@color/Green"
+    />
+    </LinearLayout>
+        <codes.side.andcolorpicker.hsl.HSLColorPickerSeekBar
+            android:id="@+id/hueSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hslColoringMode="pure"
+            app:hslMode="hue" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll2"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="+"
+        android:id="@+id/btnPlus"
+        android:onClick="@{()-> activity.onButtonPlus()}"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter the  number"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/etInput"
+        />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:text="-"
+            android:id="@+id/btnMinus"
+            android:onClick="@{()-> activity.onButtonMinus()}"
+            />
+
+    </LinearLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/workingfragment"
+            android:name="com.sanket.livedata.WorkingFragment"
+
+            />
+
+
+    </LinearLayout>
+
+
+</layout>
