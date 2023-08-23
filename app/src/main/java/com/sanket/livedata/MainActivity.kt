@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.CalendarContract.Colors
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.sanket.livedata.databinding.ActivityMainBinding
 
@@ -45,14 +46,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onButtonPlus() {
-        var value = binding.etInput.text.toString().toInt()
-        value = value + 1
-        liveDataClass.data.setValue(value)
+        if (binding.etInput.text.isNullOrEmpty()) {
+            Toast.makeText(this, "please enter number", Toast.LENGTH_SHORT).show()
+        } else {
+            var value = binding.etInput.text.toString().toInt()
+            value = value + 1
+            liveDataClass.data.setValue(value)
+        }
     }
 
     fun onButtonMinus() {
-        var value = binding.etInput.text.toString().toInt()
-        value = value - 1
-        liveDataClass.data.setValue(value)
+        if (binding.etInput.text.isNullOrEmpty()) {
+            Toast.makeText(this, "please enter number", Toast.LENGTH_SHORT).show()
+        } else {
+            var value = binding.etInput.text.toString().toInt()
+            value = value - 1
+            liveDataClass.data.setValue(value)
+
+
+        }
     }
 }
