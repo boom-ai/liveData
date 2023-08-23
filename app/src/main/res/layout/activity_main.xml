@@ -46,14 +46,17 @@
     android:text="Green"
     android:backgroundTint="@color/Green"
     />
+
     </LinearLayout>
+
         <codes.side.andcolorpicker.hsl.HSLColorPickerSeekBar
             android:id="@+id/hueSeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hslColoringMode="pure"
             app:hslMode="hue" />
-    <LinearLayout
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll2"

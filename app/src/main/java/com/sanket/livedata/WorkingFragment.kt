@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.sanket.livedata.databinding.FragmentWorkingBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +25,11 @@ class WorkingFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var mainActivity: MainActivity
+    lateinit var binding: FragmentWorkingBinding
+    lateinit var workingFragment: WorkingFragment
+
     lateinit var liveDataClass: LiveDataClass
+    lateinit var numberViewModel: NumberViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,17 +46,27 @@ class WorkingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_working, container, false)
+        binding =FragmentWorkingBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        numberViewModel=ViewModelProvider(mainActivity)[NumberViewModel::class.java
+        ]
         var tvnumber = view.findViewById<TextView>(R.id.tvNumber)
         liveDataClass.data.observe(mainActivity) {
             System.out.println("it Value $it")
             tvnumber.setText(it.toString())
+        }
+        numberViewModel.color.observe(mainActivity){
+            System.out.print("in observe method $it")
+            when(it){
+                1-> binding.layout.setBackgroundColor(ContextCompat.getColor(mainActivity ,R.color.Red))
+                2-> binding.layout.setBackgroundColor(ContextCompat.getColor(mainActivity ,R.color.Blue))
+                3-> binding.layout.setBackgroundColor(ContextCompat.getColor(mainActivity ,R.color.Green))
 
-            tvnumber.setBackgroundColor(R.color.Red)
+            }
 
         }
     }

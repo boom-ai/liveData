@@ -10,34 +10,49 @@ import com.sanket.livedata.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var liveDataClass: LiveDataClass
-    var value=0
+    lateinit var numberViewModel: NumberViewModel
+    var value = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         liveDataClass = ViewModelProvider(this)[LiveDataClass::class.java]
+
+        numberViewModel = ViewModelProvider(this)[NumberViewModel::class.java]
+
+        binding.btnRed.setOnClickListener {
+            numberViewModel.color.value = 1
+        }
+        binding.btnBlue.setOnClickListener {
+            numberViewModel.color.value = 2
+        }
+        binding.btnGreen.setOnClickListener {
+            numberViewModel.color.value = 3
+        }
+
+
+
         binding.activity = this
-binding.hueSeekBar
-    }
+        fun onButtonBlue() {
+            // val color= Color(R.color.Blue)
+        }
+
+        fun onButtonGreen() {
+            // val color= Color(R.color.Green)
+        }
 
 
+    }
 
-    fun onButtonBlue() {
-       // val color= Color(R.color.Blue)
-    }
-    fun onButtonGreen() {
-       // val color= Color(R.color.Green)
-    }
-    fun onButtonPlus()
-    {
-        var value=binding.etInput.text.toString().toInt()
-        value=value+1
+    fun onButtonPlus() {
+        var value = binding.etInput.text.toString().toInt()
+        value = value + 1
         liveDataClass.data.setValue(value)
     }
-    fun onButtonMinus()
-    {
-        var value=binding.etInput.text.toString().toInt()
-        value=value-1
+
+    fun onButtonMinus() {
+        var value = binding.etInput.text.toString().toInt()
+        value = value - 1
         liveDataClass.data.setValue(value)
     }
 }
