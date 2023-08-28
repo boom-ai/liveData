@@ -69,6 +69,9 @@ class WorkingFragment : Fragment() {
             }
 
         }
+        binding.btnReset.setOnClickListener {
+            binding.tvNumber.setText("0")
+        }
     }
     companion object {
         /**
